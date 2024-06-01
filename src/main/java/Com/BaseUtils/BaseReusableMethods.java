@@ -1,0 +1,33 @@
+package Com.BaseUtils;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+public class BaseReusableMethods extends DriverManager{
+	
+	@BeforeTest
+	public void launchApplication() {
+		getDriver();
+		driver.get("https://rahulshettyacademy.com/client/");
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
+	
+	public static void captureScreenshot() throws IOException {
+		//will invoke if execute through testNG xml
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File destination = new File("Extent-Reports/Screenshot.png");
+		FileUtils.copyFile(source, destination);
+		System.out.println("Screenshot captured...");
+	}
+
+}
