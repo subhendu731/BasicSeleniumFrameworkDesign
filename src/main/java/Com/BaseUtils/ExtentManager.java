@@ -11,7 +11,6 @@ public class ExtentManager {
 
 	public static ExtentReports steUpReportObject() {
 		String path = System.getProperty("user.dir") + "/Extent-Reports/index.html";
-		System.out.println("Creating html report...!!");
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 		extent = new ExtentReports();
 

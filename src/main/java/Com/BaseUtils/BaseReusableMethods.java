@@ -21,7 +21,7 @@ public class BaseReusableMethods extends DriverManager{
 		driver.quit();
 	}
 	
-	public static String captureScreenshot(String testCaseName) throws IOException {
+	public static File captureScreenshot(String testCaseName) throws IOException {
 		//will invoke if execute through testNG xml
 		String destinationPath=System.getProperty("user.dir")+"/Extent-Reports/"+testCaseName+".png";
 		
@@ -30,7 +30,7 @@ public class BaseReusableMethods extends DriverManager{
 		File destination = new File(destinationPath);
 		FileUtils.copyFile(source, destination);
 		System.out.println("Test case failed & screenshot captured...");
-		return destinationPath;
+		return destination;
 	}
 
 }

@@ -1,6 +1,5 @@
 package Com.TestCases;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -25,7 +24,6 @@ public class TC_01_Login_to_application extends BaseReusableMethods{
 		
 		test.log(Status.INFO, "***Step 2: Verify homepage is displayed");
 		homePage.verifyDisplayed();
-		Assert.assertTrue(false);
 	}
 
 }
