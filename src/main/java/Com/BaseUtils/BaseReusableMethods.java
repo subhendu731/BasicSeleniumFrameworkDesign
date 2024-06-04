@@ -21,13 +21,16 @@ public class BaseReusableMethods extends DriverManager{
 		driver.quit();
 	}
 	
-	public static void captureScreenshot() throws IOException {
+	public static String captureScreenshot(String testCaseName) throws IOException {
 		//will invoke if execute through testNG xml
+		String destinationPath=System.getProperty("user.dir")+"/Extent-Reports/"+testCaseName+".png";
+		
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		File destination = new File("Extent-Reports/Screenshot.png");
+		File destination = new File(destinationPath);
 		FileUtils.copyFile(source, destination);
-		System.out.println("Screenshot captured...");
+		System.out.println("Test case failed & screenshot captured...");
+		return destinationPath;
 	}
 
 }

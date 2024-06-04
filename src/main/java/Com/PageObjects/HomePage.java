@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import Com.BaseUtils.CustomAssert;
 import Com.BaseUtils.DriverManager;
 import Com.BaseUtils.FunctionUtil;
 import Com.BaseUtils.IsPageDisplayed;
@@ -17,9 +18,9 @@ public class HomePage extends DriverManager implements IsPageDisplayed{
 	
 	
 	public void verifyDisplayed() {
-		Boolean status;
+		Boolean status=false;
 		status=FunctionUtil.isElementExist(driver.findElement(homePageTitle));
-		Assert.assertTrue(status);
+		CustomAssert.assertTrue(status, "Homepage is displayed.");
 	}
 
 
