@@ -10,14 +10,14 @@ public class ExtentManager {
 	public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public static ExtentReports steUpReportObject() {
-		String path = System.getProperty("user.dir") + "/Extent-Reports/index.html";
+		String path = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 		extent = new ExtentReports();
 
 		reporter.config().setReportName("Automation Testing");
 		reporter.config().setDocumentTitle("Test Results");
 		extent.attachReporter(reporter);
-		extent.setSystemInfo("Tester", "Subhendu");
+		extent.setSystemInfo("Tester", "Subhendu Biswas");
 		return extent;
 	}
 
