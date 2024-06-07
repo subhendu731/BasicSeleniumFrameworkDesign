@@ -3,6 +3,7 @@ package Com.BaseUtils;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterSuite;
 
@@ -24,7 +25,7 @@ public class DriverManager {
 	}
 
 	public static WebDriver createDriver() {
-		String browser = "edge";
+		String browser = "chrome";
 		String headless = null;
 
 		switch (browser) {
@@ -51,7 +52,9 @@ public class DriverManager {
 
 	static void invokeChrome() {
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		ChromeOptions option=new ChromeOptions();
+		option.setAcceptInsecureCerts(true);
+		driver = new ChromeDriver(option);
 	}
 	
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+<suite thread-count="1" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="Com.BaseUtils.TestNGListener"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="1" name="Testing(failed)">
     <classes>
-      <class name="Com.TestCases.TC_01_Login_to_application">
+      <class name="Com.TestCases.TC_03_Verify_methods">
         <methods>
           <include name="tearDown"/>
           <include name="launchApplication"/>
-          <include name="verify_TC_01_Login_to_application"/>
+          <include name="verify_TC_03_Verify_methods"/>
         </methods>
-      </class> <!-- Com.TestCases.TC_01_Login_to_application -->
+      </class> <!-- Com.TestCases.TC_03_Verify_methods -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Testing(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -4,9 +4,14 @@ import org.testng.Assert;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class CustomAssert extends ExtentManager{
+public class CustomAssert{
 	
-	static ExtentTest test = new ExtentManager().getTest();
+	static ExtentTest test;
+
+    public CustomAssert(ExtentTest test) {
+        this.test = test;
+    }
+	
 	
 	public static void assertTrue(boolean flag, String info) {
 		Assert.assertTrue(flag);
