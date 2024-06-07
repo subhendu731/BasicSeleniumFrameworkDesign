@@ -6,8 +6,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
 
-	private static ExtentReports extent;
-	public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+	protected static ExtentReports extent;
+	protected static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public static ExtentReports steUpReportObject() {
 		String path = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
@@ -21,15 +21,14 @@ public class ExtentManager {
 		return extent;
 	}
 
-	public static ThreadLocal<ExtentTest> createTest(String testName) {
-		ExtentTest getTest = extent.createTest(testName);
-		extentTest.set(getTest);
-		return extentTest;
+	public static ExtentTest createTest(String testName) {
+		ExtentTest getTestName = extent.createTest(testName);
+		extentTest.set(getTestName);
+		return getTestName;
 	}
 	
-	public ExtentTest getTest() {
+	public static ExtentTest getTest() {
 		return extentTest.get();
 	}
-
 
 }

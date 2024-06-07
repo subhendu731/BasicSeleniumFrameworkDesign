@@ -13,21 +13,31 @@ import com.aventstack.extentreports.Status;
 public class TestNGListener extends ExtentManager implements ITestListener {
 
 	ExtentReports extent = ExtentManager.steUpReportObject();
-	
+	private ThreadLocal<CustomAssert> customAssertions = new ThreadLocal<>();
 
 	public void onTestStart(ITestResult result) {
 		System.out.println("Test Started.....!!");
 		createTest(result.getTestClass().getName());
 		extentTest.get().log(Status.INFO, "Test Started..!!");
+		
+		//Giving Extent knowledge to custom assertion
+        customAssertions.set(new CustomAssert(ExtentManager.getTest()));
+	}
+	
+	public void onTestSuccess(ITestResult result) {
+		extentTest.get().log(Status.INFO, "Test Completed..!!");
+		extent.flush();
+		System.out.println("Passed = "+result.getTestClass().getName());
 	}
 
 	public void onFinish(ITestContext context) {
-		extent.flush();
-		System.out.println("Test Completed.....!!");
+		//extent.flush();
+		System.out.println("Execution Completed.......!!");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		extentTest.get().log(Status.FAIL, "Test Failed..!!");
+		System.out.println("Failed = "+result.getTestClass().getName());
+		//extentTest.get().log(Status.FAIL, "Test Failed..!!");
 		File filePath = null;
 		try {
 			filePath = BaseReusableMethods.captureScreenshot(result.getTestClass().getName());
@@ -37,6 +47,7 @@ public class TestNGListener extends ExtentManager implements ITestListener {
 		
 		//This below code will attach screenshot with the failed step
 		extentTest.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(filePath.getAbsolutePath()).build());
+		extent.flush();
 	}
 	
 
