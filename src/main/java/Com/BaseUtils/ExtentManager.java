@@ -10,7 +10,7 @@ public class ExtentManager {
 	protected static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 
 	public static ExtentReports steUpReportObject() {
-		String path = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
+		String path = System.getProperty("user.dir") + "/test-output/ExtentReports/ExtentReport.html";
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
 		extent = new ExtentReports();
 

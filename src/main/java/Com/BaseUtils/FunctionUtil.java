@@ -1,11 +1,12 @@
 package Com.BaseUtils;
 
 import java.time.Duration;
-
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.Status;
 
 public class FunctionUtil extends DriverManager{
 	
@@ -16,6 +17,21 @@ public class FunctionUtil extends DriverManager{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public static void clickByJavascript(WebElement element) {
+		try {
+			JavascriptExecutor jse=(JavascriptExecutor) driver;
+			jse.executeScript("arguments[0].click()", element);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void input(WebElement inputBox, String value) {
+		waitForElementVisible(inputBox, 10);
+		inputBox.sendKeys(value);
+		ExtentManager.getTest().log(Status.INFO, "'"+value+"' entered in the "+inputBox.getAccessibleName()+" field.");
 	}
 	
 	public static boolean isElementExist(WebElement element) {
