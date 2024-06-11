@@ -11,6 +11,7 @@ import Com.BaseUtils.FunctionUtil;
 import Com.BaseUtils.TestNGListener;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
+import Com.PageObjects.ShoppingCartPage;
 
 public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 	
@@ -19,7 +20,9 @@ public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();
+		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		ExtentTest test = new ExtentManager().getTest();
+		String inputItem="ADIDAS ORIGINAL";
 		
 		
 		test.log(Status.INFO, "***Step 1: Launch application");
@@ -32,8 +35,12 @@ public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 		homePage.verifyDisplayed();
 		
 		test.log(Status.INFO, "***Step 4: Add at least one item to cart");
-		homePage.addItemToCart("ADIDAS ORIGINAL");
-		//homePage.navigateToShoppingCart();
+		homePage.addItemToCart(inputItem);
+		homePage.navigateToShoppingCart();
+		
+		test.log(Status.INFO, "***Step 5: Verify item added to the cart successfully");
+		shoppingCartPage.verifyItemAddedToCart(inputItem);
+		
 	}
 
 }

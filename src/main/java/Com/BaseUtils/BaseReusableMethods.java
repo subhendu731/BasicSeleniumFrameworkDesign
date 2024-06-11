@@ -37,7 +37,7 @@ public class BaseReusableMethods extends DriverManager{
 	
 	public static File captureScreenshot(String testCaseName) throws IOException {
 		//will invoke if execute through testNG xml
-		String destinationPath=System.getProperty("user.dir")+"/test-output/errorImages/"+testCaseName+".png";
+		String destinationPath=System.getProperty("user.dir")+"/test-output/ExtentReports/errorImages/"+testCaseName+".png";
 		
 		TakesScreenshot ts=(TakesScreenshot)getDriver();
 		File source = ts.getScreenshotAs(OutputType.FILE);

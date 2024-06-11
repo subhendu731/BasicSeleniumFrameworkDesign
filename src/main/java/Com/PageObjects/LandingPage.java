@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import Com.BaseUtils.DriverManager;
+import Com.BaseUtils.FunctionUtil;
 
 public class LandingPage extends DriverManager{
 
@@ -14,7 +15,8 @@ public class LandingPage extends DriverManager{
 	By loginBtn = By.name("login");
 
 	public void enterUsername(String username) {
-		driver.findElement(usernameField).sendKeys(username);
+		WebElement inputBox=driver.findElement(usernameField);
+		FunctionUtil.input(inputBox, username);
 	}
 
 	public void enterPassword(String password) {

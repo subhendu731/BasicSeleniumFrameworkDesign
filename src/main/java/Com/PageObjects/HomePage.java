@@ -8,9 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import Com.BaseUtils.CustomAssert;
 import Com.BaseUtils.DriverManager;
+import Com.BaseUtils.ExtentManager;
 import Com.BaseUtils.FunctionUtil;
 import Com.BaseUtils.IsPageDisplayed;
 import Com.BaseUtils.TestNGListener;
@@ -45,9 +47,12 @@ public class HomePage extends DriverManager implements IsPageDisplayed{
 	}
 	
 	public void navigateToShoppingCart() {
+		ExtentManager.getTest().log(Status.INFO, "***Navigate to Shopping cart page***");
+		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		WebElement shoppingCart=driver.findElement(cartBtn);
 		FunctionUtil.waitForElementClickable(shoppingCart, 10);
-		FunctionUtil.click(shoppingCart);
+		FunctionUtil.clickByJavascript(shoppingCart);
+		shoppingCartPage.verifyDisplayed();
 	}
 
 
