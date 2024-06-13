@@ -1,5 +1,6 @@
 package Com.BaseUtils;
 
+import java.io.IOException;
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,9 +25,9 @@ public class DriverManager {
 		return driver;
 	}
 
-	public static WebDriver createDriver() {
-		String browser = "chrome";
-		String headless = null;
+	public static WebDriver createDriver() throws IOException {
+		String browser = UserInputData.getBrowser();
+		String headless = UserInputData.getHeadless();
 
 		switch (browser) {
 		case "chrome":

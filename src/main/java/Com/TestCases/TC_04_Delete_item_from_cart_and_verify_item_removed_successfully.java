@@ -16,16 +16,16 @@ import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 import Com.PageObjects.ShoppingCartPage;
 
-public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
+public class TC_04_Delete_item_from_cart_and_verify_item_removed_successfully extends BaseReusableMethods{
 	
 	@Test
-	public void verify_TC_02_Add_items_to_cart_and_verify() throws IOException {
+	public void verify_TC_04_Delete_item_from_cart_and_verify_item_removed_successfully() throws IOException {
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();
 		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		ExtentTest test = new ExtentManager().getTest();
-		String inputItem="ADIDAS ORIGINAL";
+		String inputItem="IPHONE 13 PRO";
 		
 		
 		test.log(Status.INFO, "***Step 1: Launch application");
@@ -34,15 +34,15 @@ public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 		landingPage.enterPassword(UserInputData.getPassword());
 		landingPage.clickLoginButton();
 		
-		test.log(Status.INFO, "***Step 3: Verify homepage is displayed");
-		homePage.verifyDisplayed();
-		
-		test.log(Status.INFO, "***Step 4: Add at least one item to cart");
+		test.log(Status.INFO, "***Step 3: Add at least one item to cart");
 		homePage.addItemToCart(inputItem);
 		homePage.navigateToShoppingCart();
 		
-		test.log(Status.INFO, "***Step 5: Verify item added to the cart successfully");
-		shoppingCartPage.verifyItemAddedToCart(inputItem);
+		test.log(Status.INFO, "***Step 4: Delete the added item from cart");
+		shoppingCartPage.deleteItem();
+		
+		test.log(Status.INFO, "***Step 5: Verify 'No Products in Your Cart !' message");
+		shoppingCartPage.verifyNoProductsinYourCartMsg();
 		
 	}
 
