@@ -1,7 +1,10 @@
 package Com.BaseUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,9 +25,9 @@ public class BaseReusableMethods extends DriverManager{
 	
 	
 	@BeforeClass(alwaysRun = true)
-	public void launchApplication() {
+	public void launchApplication() throws IOException {
 		getDriver();
-		driver.get("https://rahulshettyacademy.com/client/");
+		driver.get(UserInputData.getURL());
 	}
 	
 	@AfterClass(alwaysRun = true)
@@ -44,6 +47,14 @@ public class BaseReusableMethods extends DriverManager{
 		File destination = new File(destinationPath);
 		FileUtils.copyFile(source, destination);
 		return destination;
+	}
+	
+	public static Properties getConfigProperty() throws IOException {
+		String configFilePath = System.getProperty("user.dir")+"/src/main/resources/Config.properties";
+		FileInputStream fis=new FileInputStream(configFilePath);
+		Properties prop=new Properties();
+		prop.load(fis);
+		return prop;
 	}
 
 }

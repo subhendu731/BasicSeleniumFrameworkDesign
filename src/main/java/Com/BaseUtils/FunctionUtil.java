@@ -13,6 +13,7 @@ public class FunctionUtil extends DriverManager{
 	
 	public static void click(WebElement element) {
 		try {
+			waitForElementClickable(element, 10);
 			element.click();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -37,6 +38,7 @@ public class FunctionUtil extends DriverManager{
 	public static boolean isElementExist(WebElement element) {
 		boolean displayedStatus=false;
 		try {
+			waitForElementVisible(element, 10);
 			displayedStatus=element.isDisplayed();
 			return displayedStatus;
 		}catch(Exception e) {
@@ -53,6 +55,7 @@ public class FunctionUtil extends DriverManager{
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
 	
 
 }
