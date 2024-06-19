@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="3" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-02T02:12:04 IST" name="Suite" finished-at="2024-06-02T02:12:23 IST" duration-ms="19172">
+  <suite started-at="2024-06-14T01:31:46 IST" name="Suite" finished-at="2024-06-14T01:32:07 IST" duration-ms="20459">
     <groups>
     </groups>
-    <test started-at="2024-06-02T02:12:04 IST" name="Test" finished-at="2024-06-02T02:12:23 IST" duration-ms="19172">
-      <class name="Com.TestCases.TC_01_Login_to_application">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@48f2bd5b]" started-at="2024-06-02T02:12:04 IST" name="launchApplication" finished-at="2024-06-02T02:12:20 IST" duration-ms="16045" status="PASS">
+    <test started-at="2024-06-14T01:31:46 IST" name="Testing" finished-at="2024-06-14T01:32:07 IST" duration-ms="20459">
+      <class name="Com.TestCases.TC_03_Verify_methods">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Com.TestCases.TC_03_Verify_methods@69ee81fc]" started-at="2024-06-14T01:31:58 IST" name="launchApplication" finished-at="2024-06-14T01:32:01 IST" duration-ms="3266" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verify_TC_01_Login_to_application()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@48f2bd5b]" started-at="2024-06-02T02:12:20 IST" name="verify_TC_01_Login_to_application" finished-at="2024-06-02T02:12:21 IST" duration-ms="1169" status="FAIL">
+        <test-method signature="verify_TC_03_Verify_methods()[pri:0, instance:Com.TestCases.TC_03_Verify_methods@69ee81fc]" started-at="2024-06-14T01:32:01 IST" name="verify_TC_03_Verify_methods" finished-at="2024-06-14T01:32:02 IST" duration-ms="851" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [true] but found [false]]]>
+              <![CDATA[expected [4] but found [3]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+              <![CDATA[java.lang.AssertionError: expected [4] but found [3]
 at org.testng.Assert.fail(Assert.java:111)
 at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertTrue(Assert.java:57)
-at org.testng.Assert.assertTrue(Assert.java:67)
-at Com.TestCases.TC_01_Login_to_application.verify_TC_01_Login_to_application(TC_01_Login_to_application.java:25)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:1419)
+at org.testng.Assert.assertEquals(Assert.java:1383)
+at org.testng.Assert.assertEquals(Assert.java:1429)
+at Com.TestCases.TC_03_Verify_methods.verify_TC_03_Verify_methods(TC_03_Verify_methods.java:32)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -56,12 +59,54 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- verify_TC_03_Verify_methods -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Com.TestCases.TC_03_Verify_methods@69ee81fc]" started-at="2024-06-14T01:32:03 IST" name="tearDown" finished-at="2024-06-14T01:32:03 IST" duration-ms="234" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Com.TestCases.TC_03_Verify_methods -->
+      <class name="Com.TestCases.TC_01_Login_to_application">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@23941fb4]" started-at="2024-06-14T01:31:46 IST" name="launchApplication" finished-at="2024-06-14T01:31:52 IST" duration-ms="5437" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="verify_TC_01_Login_to_application()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@23941fb4]" started-at="2024-06-14T01:31:52 IST" name="verify_TC_01_Login_to_application" finished-at="2024-06-14T01:31:53 IST" duration-ms="1356" status="PASS">
+          <reporter-output>
+          </reporter-output>
         </test-method> <!-- verify_TC_01_Login_to_application -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@48f2bd5b]" started-at="2024-06-02T02:12:22 IST" name="tearDown" finished-at="2024-06-02T02:12:23 IST" duration-ms="1479" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Com.TestCases.TC_01_Login_to_application@23941fb4]" started-at="2024-06-14T01:31:54 IST" name="tearDown" finished-at="2024-06-14T01:31:54 IST" duration-ms="319" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- Com.TestCases.TC_01_Login_to_application -->
-    </test> <!-- Test -->
+      <class name="Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully@6e2aa843]" started-at="2024-06-14T01:32:03 IST" name="launchApplication" finished-at="2024-06-14T01:32:05 IST" duration-ms="2513" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="verify_TC_04_Delete_item_from_cart_and_verify_item_removed_successfully()[pri:0, instance:Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully@6e2aa843]" started-at="2024-06-14T01:32:05 IST" name="verify_TC_04_Delete_item_from_cart_and_verify_item_removed_successfully" finished-at="2024-06-14T01:32:07 IST" duration-ms="1317" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_TC_04_Delete_item_from_cart_and_verify_item_removed_successfully -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully@6e2aa843]" started-at="2024-06-14T01:32:07 IST" name="tearDown" finished-at="2024-06-14T01:32:07 IST" duration-ms="263" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully -->
+      <class name="Com.TestCases.TC_02_Add_items_to_cart_and_verify">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Com.TestCases.TC_02_Add_items_to_cart_and_verify@2d29b4ee]" started-at="2024-06-14T01:31:54 IST" name="launchApplication" finished-at="2024-06-14T01:31:57 IST" duration-ms="2661" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="verify_TC_02_Add_items_to_cart_and_verify()[pri:0, instance:Com.TestCases.TC_02_Add_items_to_cart_and_verify@2d29b4ee]" started-at="2024-06-14T01:31:57 IST" name="verify_TC_02_Add_items_to_cart_and_verify" finished-at="2024-06-14T01:31:58 IST" duration-ms="1171" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_TC_02_Add_items_to_cart_and_verify -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:Com.TestCases.TC_02_Add_items_to_cart_and_verify@2d29b4ee]" started-at="2024-06-14T01:31:58 IST" name="tearDown" finished-at="2024-06-14T01:31:58 IST" duration-ms="246" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- Com.TestCases.TC_02_Add_items_to_cart_and_verify -->
+    </test> <!-- Testing -->
   </suite> <!-- Suite -->
 </testng-results>

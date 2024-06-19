@@ -13,38 +13,49 @@ import com.aventstack.extentreports.Status;
 public class TestNGListener extends ExtentManager implements ITestListener {
 
 	ExtentReports extent = ExtentManager.steUpReportObject();
-	
+	private ThreadLocal<CustomAssertion> customAssertions = new ThreadLocal<>();
 
-	@Override
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
 		System.out.println("Test Started.....!!");
-		//createTest(result.getMethod().getMethodName());
 		createTest(result.getTestClass().getName());
 		extentTest.get().log(Status.INFO, "Test Started..!!");
-	}
-
-	@Override
-	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
-		extent.flush();
-		System.out.println("Test Completed.....!!");
-	}
-
-	@Override
-	public void onTestFailure(ITestResult result) {
-		// TODO Auto-generated method stub
-		extentTest.get().log(Status.FAIL, "Test Failed..!!");
-		File filePath = null;
 		try {
-			filePath = BaseReusableMethods.captureScreenshot(result.getTestClass().getName());
+			System.out.println("Browser: "+UserInputData.getBrowser());
+			System.out.println("Headless: "+UserInputData.getHeadless());
+			System.out.println("URL: "+UserInputData.getURL());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		//Giving Extent knowledge to custom assertion
+        customAssertions.set(new CustomAssertion(ExtentManager.getTest()));
+	}
+	
+	public void onTestSuccess(ITestResult result) {
+		extentTest.get().log(Status.INFO, "Test Completed..!!");
+		extent.flush();
+		System.out.println("Passed = "+result.getTestClass().getName());
+	}
+
+	public void onFinish(ITestContext context) {
+		//extent.flush();
+		System.out.println("Execution Completed.......!!");
+	}
+
+	public void onTestFailure(ITestResult result) {
+		System.out.println("Failed = "+result.getTestClass().getName());
+		//extentTest.get().log(Status.FAIL, "Test Failed..!!");
+		File filePath = null;
+		try {
+			filePath = BaseReusableMethods.captureScreenshot(result.getTestClass().getName());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		//This below code will attach screenshot with the failed step
 		extentTest.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(filePath.getAbsolutePath()).build());
+		extent.flush();
 	}
 	
 
