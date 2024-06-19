@@ -12,7 +12,7 @@ import Com.BaseUtils.UserInputData;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 
-public class TC_03_Verify_methods extends BaseReusableMethods{
+public class TC_03_Verify_home_page_demo_tesst_case extends BaseReusableMethods{
 
 	@Test
 	public void verify_TC_03_Verify_methods() throws InterruptedException, IOException {

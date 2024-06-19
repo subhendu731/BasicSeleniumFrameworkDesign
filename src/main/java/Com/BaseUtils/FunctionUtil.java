@@ -56,6 +56,8 @@ public class FunctionUtil extends DriverManager{
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	
+	public static void implicitWait(int timeInSecond) throws InterruptedException {
+		Thread.sleep(1000*timeInSecond);
+	}
 
 }

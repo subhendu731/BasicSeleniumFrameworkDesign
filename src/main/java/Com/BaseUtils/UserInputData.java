@@ -12,8 +12,9 @@ public class UserInputData {
 		return BaseReusableMethods.getConfigProperty().getProperty("Browser");
 	}
 	
-	public static String getHeadless() throws IOException {
-		return BaseReusableMethods.getConfigProperty().getProperty("Headless");
+	public static boolean getHeadless() throws IOException {
+		String getStringValue=BaseReusableMethods.getConfigProperty().getProperty("Headless");
+		return Boolean.parseBoolean(getStringValue);
 	}
 	
 	public static String getUsername() throws IOException {

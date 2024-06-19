@@ -4,11 +4,11 @@ import org.testng.Assert;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class CustomAssert{
+public class CustomAssertion{
 	
 	static ExtentTest test;
 
-    public CustomAssert(ExtentTest test) {
+    public CustomAssertion(ExtentTest test) {
         this.test = test;
     }
 	

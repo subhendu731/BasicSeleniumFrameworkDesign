@@ -13,15 +13,23 @@ import com.aventstack.extentreports.Status;
 public class TestNGListener extends ExtentManager implements ITestListener {
 
 	ExtentReports extent = ExtentManager.steUpReportObject();
-	private ThreadLocal<CustomAssert> customAssertions = new ThreadLocal<>();
+	private ThreadLocal<CustomAssertion> customAssertions = new ThreadLocal<>();
 
 	public void onTestStart(ITestResult result) {
 		System.out.println("Test Started.....!!");
 		createTest(result.getTestClass().getName());
 		extentTest.get().log(Status.INFO, "Test Started..!!");
+		try {
+			System.out.println("Browser: "+UserInputData.getBrowser());
+			System.out.println("Headless: "+UserInputData.getHeadless());
+			System.out.println("URL: "+UserInputData.getURL());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//Giving Extent knowledge to custom assertion
-        customAssertions.set(new CustomAssert(ExtentManager.getTest()));
+        customAssertions.set(new CustomAssertion(ExtentManager.getTest()));
 	}
 	
 	public void onTestSuccess(ITestResult result) {

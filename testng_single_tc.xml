@@ -8,7 +8,7 @@
 	
 	<test name="Testing">
 		<classes>
-			<class name="Com.TestCases.TC_04_Delete_item_from_cart_and_verify_item_removed_successfully"></class>
+			<class name="Com.TestCases.TC_05_Add_one_item_and_place_order"></class>
 		</classes>
 	</test>
 </suite>
