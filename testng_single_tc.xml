@@ -11,4 +11,5 @@
 			<class name="Com.TestCases.TC_05_Add_one_item_and_place_order"></class>
 		</classes>
 	</test>
+	<!--Subhendu-->
 </suite>
