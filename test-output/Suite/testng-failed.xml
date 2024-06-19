@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="1" name="Testing(failed)">
     <classes>
-      <class name="Com.TestCases.TC_03_Verify_methods">
+      <class name="Com.TestCases.TC_03_Verify_home_page_demo_tesst_case">
         <methods>
           <include name="tearDown"/>
           <include name="launchApplication"/>
           <include name="verify_TC_03_Verify_methods"/>
         </methods>
-      </class> <!-- Com.TestCases.TC_03_Verify_methods -->
+      </class> <!-- Com.TestCases.TC_03_Verify_home_page_demo_tesst_case -->
     </classes>
   </test> <!-- Testing(failed) -->
 </suite> <!-- Failed suite [Suite] -->
