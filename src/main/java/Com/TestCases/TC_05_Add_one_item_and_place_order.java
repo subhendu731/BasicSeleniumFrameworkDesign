@@ -6,6 +6,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
+import Com.BaseUtils.Tags;
+import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
@@ -16,7 +18,8 @@ import Com.PageObjects.ShoppingCartPage;
 public class TC_05_Add_one_item_and_place_order extends BaseReusableMethods{
 	
 	@Test
-	public void verify_TC_04_Delete_item_from_cart_and_verify_item_removed_successfully() throws IOException, InterruptedException {
+	@TestInfo(TCId = "TC-105", tags = { Tags.Regression })
+	public void verify_TC_05_Delete_item_from_cart_and_verify_item_removed_successfully() throws IOException, InterruptedException {
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();

@@ -59,5 +59,11 @@ public class FunctionUtil extends DriverManager{
 	public static void implicitWait(int timeInSecond) throws InterruptedException {
 		Thread.sleep(1000*timeInSecond);
 	}
+	
+	public static void waitForOptionalElementExist(WebElement element, int... maxWaitTime) {
+		int maxTime=(maxWaitTime.length==0) ? 10 : maxWaitTime[0];
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(maxTime));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
 
 }
