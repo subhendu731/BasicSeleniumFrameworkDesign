@@ -8,6 +8,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
+import Com.BaseUtils.Tags;
+import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
@@ -15,6 +17,7 @@ import Com.PageObjects.LandingPage;
 public class TC_03_Verify_home_page_demo_tesst_case extends BaseReusableMethods{
 
 	@Test
+	@TestInfo(TCId = "TC-103", tags = { Tags.Sanity })
 	public void verify_TC_03_Verify_methods() throws InterruptedException, IOException {
 		
 		LandingPage landingPage = new LandingPage();

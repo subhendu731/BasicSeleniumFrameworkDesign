@@ -7,14 +7,17 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
+import Com.BaseUtils.Tags;
+import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 
 
 public class TC_01_Login_to_application extends BaseReusableMethods{
-
+	
 	@Test
+	@TestInfo( TCId = "TC-101", tags = { Tags.Smoke })
 	public void verify_TC_01_Login_to_application() throws InterruptedException, IOException {
 		
 		LandingPage landingPage = new LandingPage();

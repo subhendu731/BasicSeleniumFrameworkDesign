@@ -16,18 +16,32 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
+import Com.Enums.Environment;
+
 public class BaseReusableMethods extends DriverManager{
 	
+	public static String getEnv;
+	public static String defaultEnvFlag;
 	
-	
+	@Parameters({"envFlag"})
 	@BeforeClass(alwaysRun = true)
-	public void launchApplication() throws IOException {
+	public void launchApplication(@Optional String getEnvFlag) throws IOException {
 		getDriver();
-		driver.get(UserInputData.getURL());
+		
+		//Getting default environment from configuration file
+		defaultEnvFlag=UserInputData.getDefaultEnvFlag();
+		
+		//You should check for null first before calling isEmpty() to avoid a NullPointerException.
+		getEnv=(getEnvFlag==null || getEnvFlag.isEmpty()) ? defaultEnvFlag : getEnvFlag;
+		
+		//Getting envFlag value from Enumeration/Enum
+		driver.get(Environment.valueOf(getEnv).getURL());
 	}
 	
 	@AfterClass(alwaysRun = true)
@@ -56,5 +70,7 @@ public class BaseReusableMethods extends DriverManager{
 		prop.load(fis);
 		return prop;
 	}
+	
+
 
 }

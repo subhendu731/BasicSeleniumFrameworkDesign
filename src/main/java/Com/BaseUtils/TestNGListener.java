@@ -20,9 +20,11 @@ public class TestNGListener extends ExtentManager implements ITestListener {
 		createTest(result.getTestClass().getName());
 		extentTest.get().log(Status.INFO, "Test Started..!!");
 		try {
-			System.out.println("Browser: "+UserInputData.getBrowser());
+			System.out.println("Browser_Flag: "+DriverManager.browserFlag);
+			//System.out.println("Browser: "+UserInputData.getBrowser());
 			System.out.println("Headless: "+UserInputData.getHeadless());
-			System.out.println("URL: "+UserInputData.getURL());
+			System.out.println("Environment_Flag: "+BaseReusableMethods.getEnv);
+			//System.out.println("URL: "+UserInputData.getURL());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
