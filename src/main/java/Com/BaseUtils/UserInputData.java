@@ -24,5 +24,13 @@ public class UserInputData {
 	public static String getPassword() throws IOException {
 		return BaseReusableMethods.getConfigProperty().getProperty("Password");
 	}
+	
+	public static String getDefaultEnvFlag() throws IOException {
+		return BaseReusableMethods.getConfigProperty().getProperty("EnvFlag");
+	}
+	
+	public static String getDefaultBrowserFlag() throws IOException {
+		return BaseReusableMethods.getConfigProperty().getProperty("BrowserFlag");
+	}
 
 }
