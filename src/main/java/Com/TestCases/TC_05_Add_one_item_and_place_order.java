@@ -6,9 +6,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
-import Com.BaseUtils.Tags;
 import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
+import Com.Enums.Tags;
+import Com.PageObjects.BasicPage;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 import Com.PageObjects.OrderConfirmationPage;
@@ -23,6 +24,7 @@ public class TC_05_Add_one_item_and_place_order extends BaseReusableMethods{
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();
+		BasicPage basicPage=new BasicPage();
 		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		PaymentPage paymentPage=new PaymentPage();
 		OrderConfirmationPage orderConfirmationPage=new OrderConfirmationPage();
@@ -40,7 +42,7 @@ public class TC_05_Add_one_item_and_place_order extends BaseReusableMethods{
 		homePage.addItemToCart(inputItem);
 		
 		test.log(Status.INFO, "***Step 4: Navigate to shopping cart and checkout");
-		homePage.navigateToShoppingCart();
+		basicPage.navigateToShoppingCart();
 		shoppingCartPage.checkout();
 		
 		test.log(Status.INFO, "***Step 5: Fill all the payment details and place order");

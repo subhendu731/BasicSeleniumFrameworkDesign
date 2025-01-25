@@ -6,9 +6,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
-import Com.BaseUtils.Tags;
 import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
+import Com.Enums.Tags;
+import Com.PageObjects.BasicPage;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 import Com.PageObjects.ShoppingCartPage;
@@ -21,6 +22,7 @@ public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();
+		BasicPage basicPage=new BasicPage();
 		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		ExtentTest test = new ExtentManager().getTest();
 		String inputItem="ADIDAS ORIGINAL";
@@ -37,7 +39,7 @@ public class TC_02_Add_items_to_cart_and_verify extends BaseReusableMethods{
 		
 		test.log(Status.INFO, "***Step 4: Add at least one item to cart");
 		homePage.addItemToCart(inputItem);
-		homePage.navigateToShoppingCart();
+		basicPage.navigateToShoppingCart();
 		
 		test.log(Status.INFO, "***Step 5: Verify item added to the cart successfully");
 		shoppingCartPage.verifyItemAddedToCart(inputItem);

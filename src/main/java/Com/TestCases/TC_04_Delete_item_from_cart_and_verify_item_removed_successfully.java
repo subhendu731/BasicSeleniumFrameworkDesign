@@ -6,9 +6,10 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
-import Com.BaseUtils.Tags;
 import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
+import Com.Enums.Tags;
+import Com.PageObjects.BasicPage;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 import Com.PageObjects.ShoppingCartPage;
@@ -21,6 +22,7 @@ public class TC_04_Delete_item_from_cart_and_verify_item_removed_successfully ex
 		
 		LandingPage landingPage = new LandingPage();
 		HomePage homePage = new HomePage();
+		BasicPage basicPage=new BasicPage();
 		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
 		ExtentTest test = new ExtentManager().getTest();
 		String inputItem="IPHONE 13 PRO";
@@ -34,7 +36,7 @@ public class TC_04_Delete_item_from_cart_and_verify_item_removed_successfully ex
 		
 		test.log(Status.INFO, "***Step 3: Add at least one item to cart");
 		homePage.addItemToCart(inputItem);
-		homePage.navigateToShoppingCart();
+		basicPage.navigateToShoppingCart();
 		
 		test.log(Status.INFO, "***Step 4: Delete the added item from cart");
 		shoppingCartPage.deleteItem();

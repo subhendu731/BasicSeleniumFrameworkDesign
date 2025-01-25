@@ -1,4 +1,4 @@
-package Com.BaseUtils;
+package Com.Enums;
 
 public enum Tags {
 	

@@ -22,5 +22,18 @@ public class CustomAssertion{
 		Assert.assertFalse(flag);
 		test.log(Status.PASS, info);
 	}
+	
+	public static void assertEquals(int actual, int expected, String info) {
+		Status getStatus = (actual==expected) ? Status.PASS : Status.FAIL;
+		test.log(getStatus, "Actual: "+actual+", "+"Expected: "+expected+", "+info);
+		Assert.assertEquals(actual, expected);
+	}
+	
+	public static void assertEquals(String actual, String expected, String info) {
+		Status getStatus = (actual==expected) ? Status.PASS : Status.FAIL;
+		test.log(getStatus, "Actual: "+actual+", "+"Expected: "+expected+", "+info);
+		Assert.assertEquals(actual, expected);
+	}
+
 
 }
