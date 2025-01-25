@@ -2,15 +2,23 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Suite" parallel="false" thread-count="1">
+
+	<test name="Tag_Based_Testing" preserve-order="true">
+	
+	<!--Change browserFlag and envFlag as per the requirement-->
+	<parameter name="browserFlag" value="edge"></parameter>
+	<parameter name="envFlag" value="DEV"></parameter>
 	
 	<groups>
 		<run>
-			<include name="TC-102"></include>
-			<include name="TC-105"></include>
+		
+		<!--We can include/exclude Test Case Id here-->
+			<include name="TC-106"></include>
+			
 		</run>
 	</groups>
 	
-	<test name="Testing" preserve-order="true">
+	
 		<packages>
 			<package name="Com.TestCases"></package>
 		</packages>

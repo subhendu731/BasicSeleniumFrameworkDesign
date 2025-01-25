@@ -1,16 +1,15 @@
 package Com.TestCases;
 
 import java.io.IOException;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import Com.BaseUtils.BaseReusableMethods;
 import Com.BaseUtils.ExtentManager;
-import Com.BaseUtils.Tags;
 import Com.BaseUtils.TestInfo;
 import Com.BaseUtils.UserInputData;
+import Com.Enums.Tags;
 import Com.PageObjects.HomePage;
 import Com.PageObjects.LandingPage;
 
