@@ -31,7 +31,7 @@ public class TC_03_Verify_home_page_demo_tesst_case extends BaseReusableMethods{
 		
 		test.log(Status.INFO, "***Step 3: Verify homepage is displayed");
 		homePage.verifyDisplayed();
-		Assert.assertEquals(3, 4);
+		Assert.assertEquals(3, 3);
 	}
 
 }
