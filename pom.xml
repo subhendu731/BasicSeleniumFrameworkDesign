@@ -42,7 +42,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						<!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
-						<suiteXmlFile>tagBasedExecution</suiteXmlFile>
+						<suiteXmlFile>tagBasedExecution.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
