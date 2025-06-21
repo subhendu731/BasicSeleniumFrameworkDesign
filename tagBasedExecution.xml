@@ -13,6 +13,9 @@
 		<run>
 		
 		<!--We can include/exclude Test Case Id here-->
+			<include name="TC-101"></include>
+			<include name="TC-103"></include>
+			<include name="TC-105"></include>
 			<include name="TC-106"></include>
 			
 		</run>
