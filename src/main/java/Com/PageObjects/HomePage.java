@@ -18,6 +18,7 @@ public class HomePage extends DriverManager implements IsPageDisplayed{
 	By productName=By.cssSelector("div[class='card-body'] b");
 	By addToCartBtn=By.cssSelector("div.card-body button:nth-of-type(2)");
 	By cartBtn=By.xpath("//button[contains(@routerlink, 'cart')]");
+	By ordersBtn=By.xpath("//button[contains(@routerlink, 'myorders')]");
 	
 	 
 	
@@ -39,14 +40,7 @@ public class HomePage extends DriverManager implements IsPageDisplayed{
 		}
 	}
 	
-	public void navigateToShoppingCart() {
-		ExtentManager.getTest().log(Status.INFO, "***Navigate to Shopping cart page***");
-		ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
-		WebElement shoppingCart=driver.findElement(cartBtn);
-		FunctionUtil.waitForElementClickable(shoppingCart, 10);
-		FunctionUtil.clickByJavascript(shoppingCart);
-		shoppingCartPage.verifyDisplayed();
-	}
+
 
 
 }
