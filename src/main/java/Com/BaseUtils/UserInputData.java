@@ -13,6 +13,10 @@ public class UserInputData {
 	}
 	
 	public static boolean getHeadless() throws IOException {
+		String headlessProp = System.getProperty("headless");
+		if (headlessProp != null) {
+			return Boolean.parseBoolean(headlessProp);
+		}
 		String getStringValue=BaseReusableMethods.getConfigProperty().getProperty("Headless");
 		return Boolean.parseBoolean(getStringValue);
 	}

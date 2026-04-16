@@ -11,6 +11,10 @@ on:
         description: 'Optional browser flag override (chrome, edge, firefox)'
         required: false
         default: ''
+      headless:
+        description: 'Run in headless mode (true/false)'
+        required: false
+        default: 'true'
 
 jobs:
   run-tests:
@@ -40,10 +44,14 @@ jobs:
         env:
           SUITE_XML_FILE: ${{ github.event.inputs.suiteXmlFile }}
           BROWSER_FLAG: ${{ github.event.inputs.browserFlag }}
+          HEADLESS: ${{ github.event.inputs.headless }}
         run: |
           CMD="mvn -B -DsuiteXmlFile=$SUITE_XML_FILE clean test"
           if [ -n "$BROWSER_FLAG" ]; then
             CMD="$CMD -DbrowserFlag=$BROWSER_FLAG"
+          fi
+          if [ -n "$HEADLESS" ]; then
+            CMD="$CMD -Dheadless=$HEADLESS"
           fi
           echo "Running command: $CMD"
           eval "$CMD"
