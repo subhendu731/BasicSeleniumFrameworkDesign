@@ -1,0 +1,56 @@
+name: Manual Selenium Execution
+
+on:
+  workflow_dispatch:
+    inputs:
+      suiteXmlFile:
+        description: 'TestNG suite XML file to execute'
+        required: true
+        default: 'tagBasedExecution.xml'
+      browserFlag:
+        description: 'Optional browser flag override (chrome, edge, firefox)'
+        required: false
+        default: ''
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Cache Maven repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run TestNG suite
+        env:
+          SUITE_XML_FILE: ${{ github.event.inputs.suiteXmlFile }}
+          BROWSER_FLAG: ${{ github.event.inputs.browserFlag }}
+        run: |
+          CMD="mvn -B -DsuiteXmlFile=$SUITE_XML_FILE clean test"
+          if [ -n "$BROWSER_FLAG" ]; then
+            CMD="$CMD -DbrowserFlag=$BROWSER_FLAG"
+          fi
+          echo "Running command: $CMD"
+          eval "$CMD"
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-reports-${{ github.run_id }}
+          path: |
+            test-output
+            target/surefire-reports

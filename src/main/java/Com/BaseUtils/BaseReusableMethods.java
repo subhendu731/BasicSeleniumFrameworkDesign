@@ -32,7 +32,10 @@ public class BaseReusableMethods extends DriverManager{
 	@Parameters({"envFlag"})
 	@BeforeClass(alwaysRun = true)
 	public void launchApplication(@Optional String getEnvFlag) throws IOException {
-		getDriver();
+		// Ensure driver is initialized
+		if (driver == null) {
+			createDriver();
+		}
 		
 		//Getting default environment from configuration file
 		defaultEnvFlag=UserInputData.getDefaultEnvFlag();
@@ -41,7 +44,11 @@ public class BaseReusableMethods extends DriverManager{
 		getEnv=(getEnvFlag==null || getEnvFlag.isEmpty()) ? defaultEnvFlag : getEnvFlag;
 		
 		//Getting envFlag value from Enumeration/Enum
-		driver.get(Environment.valueOf(getEnv).getURL());
+		if (driver != null) {
+			driver.get(Environment.valueOf(getEnv).getURL());
+		} else {
+			System.out.println("ERROR: WebDriver is still null after initialization attempt!");
+		}
 	}
 	
 	@AfterClass(alwaysRun = true)

@@ -38,6 +38,14 @@ public class DriverManager {
 	public static WebDriver createDriver() throws IOException {
 		headless = UserInputData.getHeadless();
 
+		if (browserFlag == null) {
+			browserFlag = defaultBrowserFlag;
+		}
+
+		if (browserFlag != null) {
+			browserFlag = browserFlag.trim().toLowerCase();
+		}
+
 		switch (browserFlag) {
 		case "chrome":
 			invokeChrome();
@@ -46,33 +54,37 @@ public class DriverManager {
 		case "edge":
 			invokeEdge();
 			break;
-			
-		case "CHROME":
-			invokeChrome();
-			break;
 
-		case "EDGE":
-			invokeEdge();
+		case "firefox":
+			invokeFirefox();
 			break;
 
 		default:
-			System.out.println("invalid browser....");
+			System.out.println("Invalid or unsupported browser flag: " + browserFlag + ". Using Chrome instead.");
+			invokeChrome();
 		}
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		if (driver != null) {
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		}
 		return driver;
 	}
 
 	static void invokeEdge() {
-		WebDriverManager.edgedriver().setup();
-		EdgeOptions options=new EdgeOptions();
-		if(headless) {
-			options.addArguments("--headless=new");
-			options.addArguments("--remote-allow-origins=*");
-			options.addArguments("--start-maximized");
+		try {
+			WebDriverManager.edgedriver().setup();
+			EdgeOptions options = new EdgeOptions();
+			if (headless) {
+				options.addArguments("--headless=new");
+				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--start-maximized");
+			}
+			driver = new EdgeDriver(options);
+		} catch (Exception e) {
+			System.err.println("Edge driver setup failed. Falling back to Chrome. Error: " + e.getMessage());
+			invokeChrome();
 		}
-		driver = new EdgeDriver(options);
-	}
+}
 
 	static void invokeChrome() {
 		WebDriverManager.chromedriver().setup();
@@ -103,7 +115,10 @@ public class DriverManager {
 		
 		//@Optional will be called when browserFlag parameter is missing in testNG.xml
 		//Getting default browserFlag from configuration file
-		defaultBrowserFlag=UserInputData.getDefaultBrowserFlag();
-		browserFlag=(getBrowserFlag.isEmpty()) ? defaultBrowserFlag : getBrowserFlag;
+		defaultBrowserFlag = UserInputData.getDefaultBrowserFlag();
+		browserFlag = (getBrowserFlag == null || getBrowserFlag.isEmpty()) ? defaultBrowserFlag : getBrowserFlag;
+		if (browserFlag != null) {
+			browserFlag = browserFlag.trim();
+		}
 	}
 }
