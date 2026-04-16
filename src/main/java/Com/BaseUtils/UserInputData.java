@@ -9,7 +9,7 @@ public class UserInputData {
 	}
 	
 	public static String getBrowser() throws IOException {
-		return BaseReusableMethods.getConfigProperty().getProperty("Browser");
+		return BaseReusableMethods.getConfigProperty().getProperty("BrowserFlag");
 	}
 	
 	public static boolean getHeadless() throws IOException {
